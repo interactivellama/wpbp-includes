@@ -4,12 +4,14 @@
 function llama_add_rewrites($content) {
     global $wp_rewrite;
     $llama_new_non_wp_rules = array(
-	    'assets/icons/(.*)'      => THEME_PATH . '/assets/icons/$1',
+    	// icons for root folder
     	'favicon.ico' => 'assets/icons/favicon.ico',
     	'apple-touch(.*).png' => 'assets/icons/apple-touch$1.png',
+	    'assets/icons/(.*)'      => THEME_PATH . '/assets/icons/$1',
+      // wpbp-assets
+      'assets/wpbp-assets/(.*)'      => THEME_PATH . '/assets/wpbp-assets/$1',
+      // remove timedate stamp, present for versionng / cache busting
       '(.*)\.[\d]+\.(css|js)$'      => '$1.$2 [L]',
-      '(.*)\.[\d]+\.(js)$'      => '/$1.$2 [QSA,L]',
-      '(.*)\.[\d]+\.(css)$'      => '$1.$2 [L]'
     );
     $wp_rewrite->non_wp_rules = array_merge($wp_rewrite->non_wp_rules, $llama_new_non_wp_rules);
     return $content;
@@ -17,9 +19,7 @@ function llama_add_rewrites($content) {
 
 //add rewrites to htaccess
 if (!is_multisite() && !is_child_theme() && get_option('permalink_structure')) {
-    if (current_theme_supports('rewrite-urls')) {
       add_action('generate_rewrite_rules', 'llama_add_rewrites');
-    }
 }
 //$wp_rewrite->flush_rules(); // for debugging mod_rewrite
 

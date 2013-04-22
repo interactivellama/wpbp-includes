@@ -1,24 +1,91 @@
 <?php  
 
-/**
- * Activate Add-ons
- * Here you can enter your activation codes to unlock Add-ons to use in your theme. 
- * Since all activation codes are multi-site licenses, you are allowed to include your key in premium themes. 
- * Use the commented out code to update the database with your activation code. 
- * You may place this code inside an IF statement that only runs on theme activation.
- */ 
  
- if(!get_option('acf_repeater_ac')) update_option('acf_repeater_ac', "QJF7-L4IX-UCNP-RF2W");
- if(!get_option('acf_options_page_ac')) update_option('acf_options_page_ac', "OPN8-FA4J-Y2LW-81LS");
-// if(!get_option('acf_flexible_content_ac')) update_option('acf_flexible_content_ac', "xxxx-xxxx-xxxx-xxxx");
-// if(!get_option('acf_gallery_ac')) update_option('acf_gallery_ac', "xxxx-xxxx-xxxx-xxxx");
+ /**
+ *  Install Add-ons
+ *  
+ *  The following code will include all 4 premium Add-Ons in your theme.
+ *  Please do not attempt to include a file which does not exist. This will produce an error.
+ *  
+ *  All fields must be included during the 'acf/register_fields' action.
+ *  Other types of Add-ons (like the options page) can be included outside of this action.
+ *  
+ *  The following code assumes you have a folder 'add-ons' inside your theme.
+ *
+ *  IMPORTANT
+ *  Add-ons may be included in a premium theme as outlined in the terms and conditions.
+ *  However, they are NOT to be included in a premium / free plugin.
+ *  For more information, please read http://www.advancedcustomfields.com/terms-conditions/
+ */ 
+
+// Fields 
+add_action('acf/register_fields', 'my_register_fields');
+
+function my_register_fields()
+{
+	//include_once('add-ons/acf-repeater/repeater.php');
+	//include_once('add-ons/acf-gallery/gallery.php');
+	//include_once('add-ons/acf-flexible-content/flexible-content.php');
+}
+
+// Options Page 
+//include_once( 'add-ons/acf-options-page/acf-options-page.php' );
+
 
 /**
- * Register field groups
- * The register_field_group function accepts 1 array which holds the relevant data to register a field group
- * You may edit the array as you see fit. However, this may result in errors if the array is not compatible with ACF
- * This code must run every time the functions.php file is read
+ *  Register Field Groups
+ *
+ *  The register_field_group function accepts 1 array which holds the relevant data to register a field group
+ *  You may edit the array as you see fit. However, this may result in errors if the array is not compatible with ACF
  */
+
+ 
+/* =====================================================
+Headline for CMS static pages
+===================================================== */
+
+
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_page-headline',
+		'title' => 'Page Headline',
+		'fields' => array (
+			array (
+				'key' => 'field_51749bb81648d',
+				'label' => 'Headline',
+				'name' => 'headline',
+				'type' => 'text',
+				'instructions' => 'Headline for static pages, so that the page title isn\'t used as the headline.',
+				'default_value' => '',
+				'formatting' => 'html',
+			),
+		),
+		'location' => array (
+			'rules' => array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'page',
+					'order_no' => 0,
+				),
+			),
+			'allorany' => 'all',
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+}
+
+/* =====================================================
+Options Page Custom Fields
+===================================================== */
+ 
 
 if(function_exists("register_field_group"))
 {
