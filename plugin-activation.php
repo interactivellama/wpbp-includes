@@ -83,13 +83,21 @@ function my_theme_register_required_plugins() {
 			'slug' 		=> 'wordpress-seo',
 			'required' 	=> false,
 		),
-		
+		array(
+			'name' 		=> 'Advanced Custom Fields',
+			'slug' 		=> 'advanced-custom-fields',
+			'required' 	=> false,
+		),
 		array(
 			'name' 		=> 'Google Analytics',
 			'slug' 		=> 'google-analytics-for-wordpress',
 			'required' 	=> false,
 		),
-
+		array(
+			'name' 		=> 'Formidable Forms',
+			'slug' 		=> 'formidable',
+			'required' 	=> false,
+		)
 	);
 
 	// Change this to your theme text domain, used for internationalising strings
