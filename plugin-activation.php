@@ -1,5 +1,7 @@
 <?php
 
+// This suggests plugins to add to a theme.
+
 add_action('after_switch_theme','llama_theme_activation_action');
 
 function llama_theme_activation_action() {
@@ -70,6 +72,12 @@ function my_theme_register_required_plugins() {
 		),
 */
 		// This is an example of how to include a plugin from the WordPress Plugin Repository
+		array(
+			'name' 		=> 'Advanced Custom Fields',
+			'slug' 		=> 'advanced-custom-fields',
+			'required' 	=> false,
+		),
+		
 		array(
 			'name' 		=> 'WordPress SEO',
 			'slug' 		=> 'wordpress-seo',
