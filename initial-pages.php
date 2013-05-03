@@ -141,11 +141,3 @@ function llama_initial_page_create($pages) {
     }
 	
 }
-
-                
-
-
- ?>
- 
- 
- 

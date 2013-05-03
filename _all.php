@@ -5,7 +5,7 @@ Include all
 
 // advanced custom fields
 include_once('acf-wrapper.php');								// prevent fail if ACF is not installed
-include_once('acf-categories.php');							// support for catagories
+//include_once('acf-categories.php');							// support for catagories
 
 include_once('admin-login.php');								// logo, etc.
 
