@@ -104,6 +104,18 @@ function root_relative_attachment_urls() {
 	}
 }
 
+//for testing if local or live server
+function llama_local_server() {
+	global $servers;
+	return $servers['local'];
+}
+
+function llama_live_server() {
+	global $servers;
+	return $servers['production'];
+}
+
+
 /* * * * * * * * * * * * * * * */
 
 
