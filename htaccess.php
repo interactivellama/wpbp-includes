@@ -2,13 +2,14 @@
 
 // htaccess/url rewrite functions for assets
 
-function llama_add_rewrites($content) {
+function wpbp_add_rewrites($content) {
     global $wp_rewrite;
     $llama_new_non_wp_rules = array(
 	    'assets/icons/(.*)'      => THEME_PATH . '/assets/icons/$1',
     	'favicon.ico' => 'assets/icons/favicon.ico',
     	'apple-touch(.*).png' => 'assets/icons/apple-touch$1.png',
 
+	    'assets/wpbp-assets/(.*)'       => THEME_PATH . '/assets/wpbp-assets/$1',
       '(.*)\.[\d]+\.(css|js)$'	=> '$1.$2 [L]',
       '(.*)\.[\d]+\.(js)$'      => '/$1.$2 [QSA,L]',
       '(.*)\.[\d]+\.(css)$'     => '$1.$2 [L]'
@@ -18,10 +19,10 @@ function llama_add_rewrites($content) {
 }
 
 //add the above rules to htaccess
-if (!is_multisite() && !is_child_theme() && get_option('permalink_structure')) {
-    if (current_theme_supports('rewrite-urls')) {
-      add_action('generate_rewrite_rules', 'llama_add_rewrites');
-    }
+if (!is_multisite() && !is_child_theme()) {
+  if (current_theme_supports('rewrites')) {
+    add_action('generate_rewrite_rules', 'wpbp_add_rewrites');
+  }
 }
 //$wp_rewrite->flush_rules(); // for debugging mod_rewrite
 
