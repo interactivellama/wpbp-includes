@@ -319,5 +319,45 @@ if(function_exists("register_field_group"))
 	));
 }
 
+// Admin Only fields
+
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_admin-only',
+		'title' => 'Admin Only',
+		'fields' => array (
+			array (
+				'key' => 'field_51a64224f04a5',
+				'label' => 'Notes for Administrators',
+				'name' => 'admin_notes',
+				'type' => 'textarea',
+				'instructions' => 'This is a place for notes among admins and/or developers. Please review this field if you are new to the site. Feel free to add any notes that would be helpful',
+				'default_value' => '',
+				'formatting' => 'br',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'page',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'side',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+}
+
+
 
  ?>
