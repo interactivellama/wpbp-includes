@@ -44,6 +44,17 @@ function my_register_fields()
 Headline for CMS static pages
 ===================================================== */
 
+// Output headline if it exists, otherwise output name of page
+function llama_headline() {	
+	global $post;
+
+	$headline = _get_field('headline');
+	if( $headline == '' ) {
+		$headline = get_the_title();
+	}	
+	echo '<h1 class="headline">'. $headline . '</h1>';
+}
+
 
 if(function_exists("register_field_group"))
 {

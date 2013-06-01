@@ -6,7 +6,7 @@ add_action('after_switch_theme','llama_theme_activation_action');
 
 function llama_theme_activation_action() {
 
-	run_activate_plugin('advanced-custom-fields/acf.php');  
+	//run_activate_plugin('advanced-custom-fields/acf.php');  
 	// Repeater code: QJF7-L4IX-UCNP-RF2W 
 	// Options code: OPN8-FA4J-Y2LW-81LS
 	//run_activate_plugin('regenerate-thumbnails/regenerate-thumbnails.php'); 
