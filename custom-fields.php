@@ -44,15 +44,19 @@ function my_register_fields()
 Headline for CMS static pages
 ===================================================== */
 
-// Output headline if it exists, otherwise output name of page
+// Output headline if it exists, otherwise output the fallback string
+function llama_field($name, $fallback_string) {
+
+	$field = _get_field($name);
+	if( $field == '' ) {
+		$field = $fallback_string;
+	}	
+	return $field;
+}
+
 function llama_headline() {	
 	global $post;
-
-	$headline = _get_field('headline');
-	if( $headline == '' ) {
-		$headline = get_the_title();
-	}	
-	echo '<h1 class="headline">'. $headline . '</h1>';
+	echo '<h1 class="headline">'.llama_field( 'headline', get_the_title() ).'</h1>';
 }
 
 
@@ -313,6 +317,18 @@ if(function_exists("register_field_group"))
 				'default_value' => '',
 				'formatting' => 'none',
 				'key' => 'field_50a1ifjasdf3e',
+				'order_no' => 4,
+			),
+			5 => 
+			array (
+				'label' => 'Vimeo URL',
+				'name' => 'vimeo_url',
+				'type' => 'text',
+				'instructions' => 'URL to Vimeo site (if enabled in theme)',
+				'required' => '0',
+				'default_value' => '',
+				'formatting' => 'none',
+				'key' => 'field_50a1498asdf3e',
 				'order_no' => 4,
 			)
 		),
