@@ -92,6 +92,11 @@ function my_theme_register_required_plugins() {
 			'name' 		=> 'Formidable Forms',
 			'slug' 		=> 'formidable',
 			'required' 	=> false,
+		),
+		array(
+			'name' 		=> 'Regenerate Thumbnails',
+			'slug' 		=> 'regenerate-thumbnails',
+			'required' 	=> false,
 		)
 	);
 

@@ -22,13 +22,20 @@ include_once('root-relative-links.php');				// remove domain front content field
 include_once('search-engines.php');							// SEO functions, like spider block staging sites
 include_once('htaccess.php');										// htaccess/url rewrite functions for assets
 
+include_once('slideshow.php');									// home slideshow
 
 /* =======================
 Miscellaneous
 ======================= */
 
-function llama_page_template($file_name) {
+
+// no variable returns string, otherwise returns boolean
+
+function llama_page_template($file_name = '') {
 	global $post;
+	if($file_name == '') {	
+		return basename( get_page_template(), '.php' );
+	}
 	if (basename( get_page_template(), '.php' ) == $file_name ) {
 		return true;
 	}
