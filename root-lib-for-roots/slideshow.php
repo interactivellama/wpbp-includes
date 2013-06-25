@@ -12,9 +12,13 @@
 			
 			$image_small =wp_get_attachment_image_src($row['image'], 'hero-home-small');
 			$image_source_small = $image_small[0];
+			
+			$background_color_picker = $row['background_color_picker'];
+
 			?>
 			<li>
-				<a class="slide" data-image-source="<?php echo $image_source; ?>" data-image-source-small="<?php echo $image_source_small; ?>" data-alt-text="<?php echo $row['alt_text']; ?>" href="<?php echo $row['url']; ?>"></a>
+				<a class="slide" data-image-source="<?php echo $image_source; ?>" data-image-source-small="<?php echo $image_source_small; ?>" data-alt-text="<?php echo $row['alt_text']; ?>" href="<?php echo $row['url']; ?>">
+				</a>
 			</li>	
 			<?php	
 		}
@@ -23,15 +27,6 @@
 	} 
 }
 /* <img src="<?php echo $image_source; ?>" alt="<?php echo $row['alt_text']; ?>" /> */
-
-
-function slideshow_image() {
-	$width = 1024;
-	$height = 350;
-	add_image_size('hero-home', $width, $height, true);
-  add_image_size('hero-home-small', $width / 2 , $height / 2, true);
-}
-add_action('after_setup_theme', 'slideshow_image');
 
 if(function_exists("register_field_group"))
 {
@@ -107,6 +102,14 @@ if(function_exists("register_field_group"))
 						'formatting' => 'html',
 						'order_no' => '2',
 						'key' => 'field_50b51b0ef00cb',
+					),
+					'field_504g1b0ef00cb' => 
+					array (
+						'default_value' => '',
+						'key' => 'field_51c9d9590c08f',
+						'label' => 'Background Color Picker',
+						'name' => 'background_color_picker',
+						'type' => 'color_picker',
 					),
 				),
 				'row_min' => '0',

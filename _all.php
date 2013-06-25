@@ -22,8 +22,6 @@ include_once('root-relative-links.php');				// remove domain front content field
 include_once('search-engines.php');							// SEO functions, like spider block staging sites
 include_once('htaccess.php');										// htaccess/url rewrite functions for assets
 
-include_once('slideshow.php');									// home slideshow
-
 /* =======================
 Miscellaneous
 ======================= */
