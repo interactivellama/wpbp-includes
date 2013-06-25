@@ -15,7 +15,7 @@ add_action('login_head', 'my_custom_login_logo');
 
 function hide_admin_bar_on_small_screens() {
 	if( current_user_can( 'manage_options' ) ) {
-    echo '<style>@media screen and (max-width: 600px) {
+    echo '<style>@media screen and (max-width: 767px) {
 			#wpadminbar {
 				display: none !important;
 			}
