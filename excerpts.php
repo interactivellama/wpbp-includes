@@ -21,19 +21,28 @@ function llama_excerptmore( $more ) {
 
 
 function llama_excerpt( $the_content = '', $link = '', $length_callback = '', $more_callback = '' ) {
+
+	global $post;
+
 	if ( function_exists( $length_callback ) )
 		add_filter( 'excerpt_length', $length_callback );
 	if ( function_exists( $more_callback ) )
 		add_filter( 'excerpt_more', $more_callback );
 	
-	$the_excerpt = get_the_excerpt();
+	if($the_content == '') {
+		$the_excerpt = get_the_excerpt();
+	}
+	else {	
+		$the_excerpt = $the_content;	
+	}
+
 	$output = apply_filters( 'wptexturize', $the_excerpt );
 	$output = apply_filters( 'convert_chars', $output );
 
 	echo wpautop($output);
 
- 	if ($the_excerpt !== $the_content && $link) {	
-		echo '<div class="more"><a href="'.$link.'">Continue reading</a>.</div>';	
+ 	if ($the_excerpt !== $the_content && $link) {
+		echo '<nav class="more"><a href="'.$link.'">Continue reading &rarr;</a></nav>';	
 	}
 
 }
