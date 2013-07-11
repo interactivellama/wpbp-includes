@@ -74,6 +74,9 @@ function convertRelativeToAbsoluteURL($rel, $base) {
 	$path = '';
 	
 	/* parse base URL and convert to local variables: $scheme, $host, $path */
+	
+	
+	// this line appears to be a boolean sometimes, need to look into further
 	extract(parse_url($base));
 	
 	/* remove non-directory element from path */
