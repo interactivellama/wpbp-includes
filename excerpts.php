@@ -7,6 +7,10 @@ function llama_excerpt_length_blog( $length ) {
 	return 35;
 }
 
+function llama_excerpt_length_home_blog( $length ) {
+	return 20;
+}
+
 function llama_excerpt_length_recent_posts( $length ) {
 	return 100;
 }
