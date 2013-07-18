@@ -24,7 +24,7 @@ function llama_excerptmore( $more ) {
 }
 
 
-function llama_excerpt( $the_content = '', $link = '', $length_callback = '', $more_callback = '' ) {
+function llama_excerpt( $the_content = '', $link = '', $length_callback = '', $more_callback = '', $link_text = '' ) {
 
 	global $post;
 
@@ -45,8 +45,12 @@ function llama_excerpt( $the_content = '', $link = '', $length_callback = '', $m
 
 	echo wpautop($output);
 
+	if($link_text == '') {
+		$link_text = 'Continue reading &rarr;';
+	}
+
  	if ($the_excerpt !== $the_content && $link) {
-		echo '<nav class="more"><a href="'.$link.'">Continue reading &rarr;</a></nav>';	
+		echo '<nav class="more"><a href="'.$link.'">'.$link_text.'</a></nav>';	
 	}
 
 }
