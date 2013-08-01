@@ -1,77 +1,44 @@
 <?php 
 // create pages
 
+// Function that outputs the contents of the dashboard widget
+function dashboard_widget_function() {
+	echo "This is just a simple notice.";
+}
+
+// Function used in the action hook
+function llama_dashboard_initial_pages_status() {
+	wp_add_dashboard_widget('llama_dashboard_initial_pages_status', 'WARNING: Inital Pages will load on theme initiation!', 'dashboard_widget_function');
+}
+
+// Register the new dashboard widget with the 'wp_dashboard_setup' action
+add_action('wp_dashboard_setup', 'llama_dashboard_initial_pages_status' );
+
 add_action('after_switch_theme','llama_define_initial_pages');
 
 function llama_define_initial_pages() {
 
-$lorem = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut ultricies posuere nisi. Sed hendrerit tempor purus. Nunc mauris sem, tincidunt ac, pellentesque sit amet, rutrum id, quam. Pellentesque diam. Vestibulum dignissim pede ac velit. Curabitur a tellus a massa porta tempor. Duis dolor turpis, iaculis vel, dictum non, tempus a, risus. Ut ac mauris nec tortor venenatis fermentum. Nulla mollis elementum elit. Phasellus cursus lobortis lacus. Proin nec dolor. Nulla facilisi.
+$lorem = 'Veggies sunt bona vobis, proinde vos postulo esse magis earthnut pea jícama chickweed collard greens bitterleaf mustard grape lettuce cabbage leek fennel.
 
-Morbi consectetuer leo quis pede. Vestibulum id diam. Phasellus eu justo at ipsum lacinia sodales. Morbi iaculis. Quisque vel odio. Vivamus interdum elementum mauris. Donec porta. Vivamus ligula. Fusce volutpat aliquet sem. Cras nec erat. Vivamus ipsum. Sed quam. Quisque magna. Curabitur consequat nisl nec quam. Proin luctus luctus dui. In id nunc. Vivamus facilisis. Duis pellentesque ultricies tortor.';
+Kombu chard gumbo turnip sorrel rutabaga aubergine bunya nuts parsnip parsley watercress beet greens broccoli rabe lotus root groundnut brussels sprout. Parsley salsify courgette fava bean bok choy shallot sorrel. Quandong groundnut garlic cabbage potato bok choy.
+
+Nori dulse garlic sorrel gourd taro mustard caulie courgette chicory tigernut water chestnut. Aubergine celtuce green bean grape bunya nuts turnip beet greens amaranth soko spring onion broccoli sorrel garbanzo gourd plantain. Gourd tatsoi bunya nuts daikon welsh onion artichoke turnip kombu shallot scallion cucumber amaranth. Beet greens dandelion yarrow komatsuna broccoli rabe courgette water spinach taro radish melon fava bean. Radicchio broccoli potato summer purslane catsear black-eyed pea desert raisin nori.';
 
 
 	$pages = array(
-	    array(
-	        'title' => 'Home',
-	        'template' => array(
-  	        'post_type' => 'page',
-		        'post_status' => 'publish',
-		        'post_author' => 1,
-		        'post_content' => $lorem
-	        ), // hidden child pages (usually)
-	        'child' => array("Employee Resources", "Employee Resources", "Request An Appointment"
-	        )
-	    ),
-	    
+	    // Home page added by roots
 	    array(
 	        'title' => 'About',
-	        'template' => array(
-  	        'post_type' => 'page',
+					'template' => array(
+		        'post_type' => 'page',
 		        'post_status' => 'publish',
 		        'post_author' => 1,
 		        'template_file' => 'page-about.php',
 		        'post_content' => $lorem
 	        ),
-	        'child' => array("HISTORY","LEADERSHIP","WHY KOORSEN","NEWS & VIEWS - LINK","LOCATIONS-Link","KOORSEN MUSEUM","IN THE COMMUNITY","WORK FOR US"
-	        )
-	    ),
-	    
-	    array(
-	        'title' => 'Products and Services',
-					'template' => array(
-		        'post_type' => 'page',
-		        'post_status' => 'publish',
-		        'post_author' => 1,
-		        'template_file' => 'page-products.php',
-		        'post_content' => $lorem
-	        ),
-	        'child' => array("FIRE EXTINGUISHERS", "GENERAL FIRE", "PRODUCTS", "EMERGENCY/EXIT", "LIGHTING", "FIRE ALARM SYSTEMS", "FIRE SPRINKLER", "SYSTEMS", "KITCHEN FIRE", "SUPPRESSION", "SYSTEMS", "FIRE SUPPRESSIONS", "SYSTEMS", "SECURITY", "COMMUNICATIONS", "MONITORING", "VEHICLE FIRE", "SUPPRESSION", "HOME SECURITY"
-	  	    )
+	        'child' => array("")
 	  	),
-	  	
-	    array(
-	        'title' => 'NEWS & VIEWS',
-					'template' => array(
-		        'post_type' => 'page',
-		        'post_status' => 'publish',
-		        'post_author' => 1,
-		        'post_content' => $lorem
-	        )
-	  	),
-	  	
-	  	array(
-	        'title' => 'Locations',
-					'template' => array(
-		        'post_type' => 'page',
-		        'post_status' => 'publish',
-		        'post_author' => 1,
-		        'template_file' => 'page-locations.php',
-		        'post_content' => $lorem
-	        ),
-	        'child' => array("ALABAMA", "HUNTSVILLE,AL", "FLORIDA", "FT. WALTON BEACH. FL", "PENSACOLA. FL", "INDIANA", "BLOOMINGTON. IN", "COLUMBUS. IN", "EVANSVILLE. IN", "FT. WAYNE. IN", "INDIANAPOLIS. IN", "KOKOMO. IN", "MUNCIE. IN", "RICHMOND. IN", "SOUTH BEND. IN", "TERRE HAUTE. IN", "KENTUCKY", "LEXINGTON. KY", "LOUISVILLE. KY", "OHIO", "CINCINNATI. OH", "COLUMBUS. OH", "DAYTON. OH", "TENNESSEE", "NASHVILLE. TN", "NATIONAL ACCOUNTS"
-	  	    )
-	  	),
-	  	
+	    	  	
 	  	array(
 	        'title' => 'Contact',
 					'template' => array(
@@ -81,8 +48,7 @@ Morbi consectetuer leo quis pede. Vestibulum id diam. Phasellus eu justo at ipsu
 		        'template_file' => 'page-contact.php',
 		        'post_content' => $lorem
 	        ),
-	        'child' => array("MAKE A PAYMENT", "MAIN ADDRESS", "DIRECTORY", "LOCATIONS-Link", "CAREERS", "SOCIAL MEDIA"
-	  	    )
+	        'child' => array("")
 	  	),
 	  		  	
 	);
