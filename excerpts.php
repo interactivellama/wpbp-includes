@@ -33,14 +33,13 @@ function llama_excerpt( $the_content = '', $link = '', $length_callback = '', $m
 	if ( function_exists( $more_callback ) )
 		add_filter( 'excerpt_more', $more_callback );
 	
+	$the_excerpt = get_the_excerpt();
+	
 	if($the_content == '') {
-		$the_excerpt = get_the_excerpt();
-	}
-	else {	
-		$the_excerpt = $the_content;	
+		$the_content = $the_excerpt;
 	}
 
-	$output = apply_filters( 'wptexturize', $the_excerpt );
+	$output = apply_filters( 'wptexturize', $the_content );
 	$output = apply_filters( 'convert_chars', $output );
 
 	echo wpautop($output);
