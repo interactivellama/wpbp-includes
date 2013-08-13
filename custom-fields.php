@@ -330,6 +330,18 @@ if(function_exists("register_field_group"))
 				'formatting' => 'none',
 				'key' => 'field_50a1498asdf3e',
 				'order_no' => 4,
+			),
+			6 => 
+			array (
+				'label' => 'Google Plus URL',
+				'name' => 'googleplus_url',
+				'type' => 'text',
+				'instructions' => 'URL to Google Plus Page (if enabled in theme)',
+				'required' => '0',
+				'default_value' => '',
+				'formatting' => 'none',
+				'key' => 'field_503f498asdf3e',
+				'order_no' => 4,
 			)
 		),
 		'location' => 
