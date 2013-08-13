@@ -33,13 +33,15 @@ function llama_excerpt( $the_content = '', $link = '', $length_callback = '', $m
 	if ( function_exists( $more_callback ) )
 		add_filter( 'excerpt_more', $more_callback );
 	
-	$the_excerpt = get_the_excerpt();
-	
-	if($the_content == '') {
-		$the_content = $the_excerpt;
+	if($the_excerpt !== '') {	
+		$the_excerpt = get_the_excerpt();
+		$output = apply_filters( 'wptexturize', $the_excerpt );
+	}
+	else {
+		$output = $the_content;
+		$output = apply_filters( 'wptexturize', $the_content );
 	}
 
-	$output = apply_filters( 'wptexturize', $the_content );
 	$output = apply_filters( 'convert_chars', $output );
 
 	echo wpautop($output);
@@ -48,7 +50,7 @@ function llama_excerpt( $the_content = '', $link = '', $length_callback = '', $m
 		$link_text = 'Continue reading &rarr;';
 	}
 
- 	if ($the_excerpt !== $the_content && $link) {
+	if ($link) {
 		echo '<nav class="more"><a href="'.$link.'">'.$link_text.'</a></nav>';	
 	}
 
