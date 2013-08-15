@@ -1,6 +1,24 @@
 <?php
 
-// Requires page redirect page template (page-redirect.php), this is just the ACF field
+// Requires page redirect page template (page-redirect.php)
+// Call llama_page_redirect() from base.php, before any output
+
+function llama_page_redirect() {	
+
+	if(llama_page_template('page-redirect') && function_exists("get_field")) {
+
+		$page_destination = _get_field('page_destination');
+
+		if($page_destination) {
+			$id = $page_destination->ID;
+			// temporary redirect
+			wp_redirect( get_permalink($id), '302' ); 
+			exit;	
+		}
+
+	}		
+
+}
 
 function llama_page_redirect() {	
 

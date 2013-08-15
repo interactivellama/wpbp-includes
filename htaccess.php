@@ -5,10 +5,12 @@
 function wpbp_add_rewrites($content) {
     global $wp_rewrite;
     $llama_new_non_wp_rules = array(
+    	// icons for home screen and bookmarks
 	    'assets/icons/(.*)'      => THEME_PATH . '/assets/icons/$1',
     	'favicon.ico' => 'assets/icons/favicon.ico',
     	'apple-touch(.*).png' => 'assets/icons/apple-touch$1.png',
 
+    	// other rules
 	    'assets/wpbp-assets/(.*)'       => THEME_PATH . '/assets/wpbp-assets/$1',
       '(.*)\.[\d]+\.(css|js)$'	=> '$1.$2 [L]',
       '(.*)\.[\d]+\.(js)$'      => '/$1.$2 [QSA,L]',
@@ -25,6 +27,7 @@ if (!is_multisite() && !is_child_theme()) {
   }
 }
 //$wp_rewrite->flush_rules(); // for debugging mod_rewrite
+
 
 /* * * * * * * * * * * * * * * * * * * * * * *
  Cache busting autoversioning for CSS and JS
