@@ -20,22 +20,6 @@ function llama_page_redirect() {
 
 }
 
-function llama_page_redirect() {	
-
-	if(llama_page_template('page-redirect') && function_exists("get_field")) {
-		$page_destination = _get_field('page_destination');
-
-		if($page_destination) {
-			$id = $page_destination->ID;
-			// temporary redirect
-			wp_redirect( get_permalink($id), '302' ); 
-			exit;	
-		}
-
-	}		
-
-}
-
 
 /**
  * Register field groups
