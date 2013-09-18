@@ -10,7 +10,7 @@ The Roots theme has many benefits:
 * HTML5 Boilerplate’s markup
 * Bootstrap from Twitter
 * Theme wrapper
-* Root relative URLs
+* Root relative URLs to make the database domain agnostic
 * Clean URLs (no more /wp-content/)
 * All static theme assets are rewritten to the website root (/assets/css/, /assets/img/, and /assets/js/)
 * Cleaner HTML output of navigation menus
@@ -18,7 +18,7 @@ The Roots theme has many benefits:
 * Posts use the hNews microformat
 
 ## Content
-Import this XML file via the "built-in" importer to test the blog post portion of WordPress. It contains a few categories and posts that have sample HTML elements in them. It is recommended that all this "dummy content" be assigned to a user that will be deleted (an thus all associated posts removed) when the site goes into production.
+Import this WordPress XML file via the "built-in" importer to test the blog post portion of WordPress. It contains a few categories and posts that have sample HTML elements in them. It is recommended that all this "dummy content" be assigned to a user that will be deleted (an thus all associated posts removed) when the site goes into production.
 
 ## Copy to /lib/ files
 This is a storage bin located in `/copy-to-root-lib-folder/` for snippets of PHP and HTML that should be manually added to the /lib/ folder of the theme and included in `/lib/custom.php`.
@@ -27,18 +27,9 @@ This is a storage bin located in `/copy-to-root-lib-folder/` for snippets of PHP
 This is a storage bin located in `/snippets/` for snippets of PHP and HTML. These are typically overwrites of the default theme files. Please manually add to them to your theme (if you want).
 
 ## Third-party libraries and WordPress Plugins (unversioned)
-These are found in /lib/wpbp-includes/vendor/. Any other folder is probably custom.
-
-* *acf-options-page* - Copy to the WordPress plugins directory
-
-* *acf-repeater* - Copy to the WordPress plugins directory
+THe following are found in /lib/wpbp-includes/vendor/.
 
 * *wp-h5bp-htaccess-master* - HTML5 Boilerplate's htaccess file. Removed from roots in April 2013. Recommended to be a direct include instead of a plugin. <https://github.com/roots/wp-h5bp-htaccess/>
-
-## Additional Reference Information
-> Formidable Forms Logins:
-> welldonemarketing
-> welldone1
 
 ## Contact
 This repository was began by Stephen M. James (InteractiveLlama) while working at Well Done Marketing.
